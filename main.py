@@ -19,6 +19,6 @@ def count_uppercase_letters(input_string):
     return count
 
 print(count_uppercase_letters("Hello World"))
-input_string = "LeladdharJahnavI"
+input_string = "Leladdhar"
 count = sum(1 for letter in input_string if letter.isupper())
 print(count)
