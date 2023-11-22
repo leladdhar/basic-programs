@@ -16,7 +16,7 @@
 # print(count)
 
 
-a = "teeter"
+a = input("enter a string: ")
 count = 0
 d = {}
 l = sorted(a)
