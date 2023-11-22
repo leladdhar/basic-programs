@@ -3,14 +3,6 @@
 #     if i.isupper():
 #         print(i)
 #
-#
-# a = input("enter a string: ")
-# count = 0
-# for letter in a:
-#     if letter.isupper():
-#         count += 1
-# return count
-#
 # def count_uppercase_letters(input_string):
 #     count = 0
 #     for letter in input_string:
@@ -35,7 +27,7 @@ for i in l:
         d[i] = d[i] + 1
 for k,v in d.items():
     if v == 1:
-        print(k)
+        print(k)s
         # break
 
 print(d)
