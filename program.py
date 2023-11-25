@@ -14,3 +14,21 @@ for k,v in d.items():
         # break
 
 print(d)
+
+
+
+class Login():
+    users = {'User1': 'password1', 'User2': 'password2', 'User3': 'password3'}
+
+    def login(self):
+        self.username = input("Enter username: ")
+        self.password = input("Enter password: ")
+
+        if self.username in self.users and self.users[self.username] == self.password:
+            print("Login successful")
+        else:
+            print("Invalid username or password")
+
+login_instance = Login()
+
+login_instance.login()
