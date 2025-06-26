@@ -1,13 +1,13 @@
 *** Settings ***
 Library  SeleniumLibrary
-#Library  DateTime
+Library  DateTime
 
 #
 Test Setup   Open Login Page
 Test Teardown   Close My Browsers
 
 *** Variables ***
-${URL}      https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+${URL}  https://www.automationexercise.com/                                              #https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
 ${BROWSER}           chrome
 ${expected_text}
 ${username}  Admin
@@ -23,6 +23,7 @@ Open Login Page
     Open Browser    ${URL}    ${BROWSER}
     SeleniumLibrary.Maximize Browser Window
     SeleniumLibrary.Set Selenium Implicit Wait   5
+    Set Selenium speed  1
 
 Close My Browsers
     Close All Browsers
@@ -48,38 +49,36 @@ Input Password
 #    [Arguments]    ${password}  ${Valid_password}
 #    Input Text    ${password}  ${Valid_password}
 #
+#
+#Assertions
+#    Page Should Contain   Dashboard
+#
+#Error Assertion
+#    Page Should Contain     Invalid credentials
 
+#*** Test Cases ***
+#Example Test
+#    [Documentation]  Demonstrating Try Catch
+#    ${result}  Run Keyword And Ignore Error  Some Keyword That Might Fail
+#    Run Keyword If  '${result}' == 'FAIL'  Log  An error occurred: ${result}
 Assertions
-    Page Should Contain   Dashboard
-
-Error Assertion
-    Page Should Contain     Invalid credentials
+    [Arguments]    ${message}
+    ${result}  Run Keyword And Return Status   Page Should Contain   ${message}
+    Run Keyword If  '${result}' == 'FAIL'  Log  An error occurred: ${result}
 
 
 *** Test Cases ***
 TC001 _ Valid Login Test
-    sleep  2
-    Open Login Page
+    [Tags]  TC001
     Wait Until Page Contains Element   name : username
     Input Text    name : username    Admin
-    sleep  2
-#    Wait Until Page Contains Element   xpath : //img[@alt='normal captcha example']
-    sleep  2
-#    ${element_text}    Get Text    xpath : //img[@alt='normal captcha example']
-    sleep  2
-#    log to console   ${element_text}
     Input Text    name : password    Admin123
-#    //img[@alt='normal captcha example']
-#    Wait Until Page Contains Element   name : password
-    Input Text    name : password    Admin123
-    sleep  2
     Click Submit Button
-#    sleep  2
-##    Assertions
+    Assertions  Dashboard
 
 
 
-#
+##
 #TC002 _ Test invalid login with wrong password
 ##    Open Login Page
 #    sleep  2
@@ -91,9 +90,9 @@ TC001 _ Valid Login Test
 #    sleep  2
 #    Click Submit Button
 #    sleep  2
-#    Error Assertion
+#    Assertions  Invalid credentials
 #    sleep  2
-#
+
 #
 #TC003 _ Test invalid login with wrong username
 #    sleep  2

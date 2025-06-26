@@ -1,33 +1,16 @@
-# a1 = input("enter a string: ")
-# for i in a1:
-#     if i.isupper():
-#         print(i)
-#
-# def count_uppercase_letters(input_string):
-#     count = 0
-#     for letter in input_string:
-#         if letter.isupper():
-#             count += 1
-#     return count
-#
-# print(count_uppercase_letters("Hello World"))
-# input_string = "LeladdharJahnavI"
-# count = sum(1 for letter in input_string if letter.isupper())
-# print(count)
+import time
+from selenium import webdriver
+
+# Specify the path to the WebDriver
+# driver_path = 'path/to/chromedriver'  # Update this with the actual path to your WebDriver
+
+# Create a new instance of the Chrome driver
+driver=webdriver.Chrome(executable_path="C:\Users\admin\AppData\Local\Programs\Python\Python310\Scripts\chromedriver.exe")
+
+# Open a website
+driver.get('https://www.google.com')
+time.sleep(5)
+# Close the browser
+driver.quit()
 
 
-a = input("enter a string: ")
-count = 0
-d = {}
-l = sorted(a)
-for i in l:
-    if i not in d:
-        d[i] = 1
-    else:
-        d[i] = d[i] + 1
-for k,v in d.items():
-    if v == 1:
-        print(k)s
-        # break
-
-print(d)
